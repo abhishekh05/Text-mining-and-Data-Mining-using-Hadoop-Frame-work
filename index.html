@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Lab2 Cse-587</title>
+<meta charset="UTF-8">
+<!--I have used the w3 cascading style sheet in Html to help make this site to avoid wasting time for the porject.-->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;ß
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  background-color: #ffffff;
+
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+</style>
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+</style>
+<style>
+            .dropbtn {
+                background-color: #4CAF50;
+                color: white;
+                padding: 16px;
+                font-size: 16px;
+                border: none;
+                cursor: pointer;
+            }
+        
+        .dropbtn:hover, .dropbtn:focus {
+            background-color: #3e8e41;
+        }
+        
+        #myInput {
+            border-box: box-sizing;
+            background-image: url('searchicon.png');
+            background-position: 14px 12px;
+            background-repeat: no-repeat;
+            font-size: 16px;
+            padding: 14px 20px 12px 45px;
+            border: none;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        #myInput:focus {outline: 3px solid #ddd;}
+        
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f6f6f6;
+            min-width: 230px;
+            overflow: auto;
+            border: 1px solid #ddd;
+            z-index: 1;
+        }
+        
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .dropdown a:hover {background-color: #ddd;}
+        
+        .show {display: block;}
+     
+     
+        
+            </style>
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="d3.layout.cloud.js"></script>
+<body>
+<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"></h3>
+    <script > d3.select("h3").text("Achintya Pillai & Abhishekh Sarvepalli"); </script>
+  </div>
+  <div class="w3-bar-block">
+  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">About</a> 
+<script > d3.select("a").text("About"); </script>
+
+  <a href="#designers" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">NyTimes Data</a> 
+  <script > d3.select("a").text("NyTimes Data"); </script>
+
+    <a href="#showcase" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Twitter Data</a> 
+    <script > d3.select("a").text("Twitter Data"); </script>
+
+    <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Commom Crawl Data</a> 
+    <script > d3.select("a").text("Common Crawl Data"); </script>
+
+    <a href="#wordco" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Word Co-occurence</a> 
+  </div>
+</nav>
+<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
+  <span>CSE-587 Lab 2</span>
+  <script > d3.select("snap").text("CSE-587 Lab 2"); </script>
+
+</header>
+<div style="margin-left:400px;margin-right:60px">
+
+
+<div class="w3-container" style="margin-top:80px" id="about">
+    <h1 class="w3-jumbo"><b></b></h1>
+      <script > d3.select("h1").text("CSE-587 Lab 2"); </script>
+
+    <h1 class="w3-xxxlarge w3-text-red"><b>About</b></h1>
+          <!--<script > d3.select("h1").text("About"); </script>-->
+
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+        <p> </p>
+<script > d3.select("p").text("In this lab, we have worked on the following components: (1) Data Collectiong (2) Working with Hadoop Mar Reduce (3) Visualization of the data we collected. For part 1, we have collect data from 3 different sources, which are, twitter, NewYork times and Common Crawler. We have collected data, based on certain key words which we thought was an important and widely debated topic in our society today. After the data collection process we have wroked with the hadoop, map reduce environment to conduct some analysis on our data which includes word count and word Co-occurence. In part 3, we have made a website using D3 and HTML to showcase and visualization our findings from parts 1 and 2. This lab will help expand our skills in data exploration, big data analytics and visualization. The following were the tasks done for this lab, (i) Applying classical big data analytic method of MapReduce to the unstructured data collected, (ii) store the data collected on WORM infrastructure Hadoop and (iii) building a visualization data product"); </script>
+
+
+  </div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+  <br>
+
+<br>
+<br>
+
+  <br>
+
+
+
+
+  <!-- Designers -->
+  <div class="w3-container" id="designers" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>NyTimes Data</b></h1>
+
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+<div class="dropdown">
+  <button class="dropbtn" >Key Words</button>
+  <div class="dropdown-content">
+    <a href="nycrisis.html">Crisis Full Data</a>
+    <a href="nydaca.html">Daca Full Data</a>
+    <a href="nyill.html">illigal Full Data</a>
+    <a href="nyimm.html">immigrants Full Data</a>
+    <a href="imm2.html">immigration Full Data</a>
+    <a href="nylaw.html">laws all Full Data</a>
+    <a href="illi.html">legal all Full Data</a>
+    <a href="nymex.html">mexicans all Full Data</a>
+    <a href="nypoli.html">policy all Full Data</a>
+    <a href="nyvisa.html">visa all  Full Data</a>
+     <a href="nycrisishalf.html">Crisis Half Data</a>
+    <a href="nydacahalf.html">Daca Half Data</a>
+    <a href="nyillhalf.html">illigal Half Data</a>
+    <a href="nyimmhalf.html">immigrants Half Data</a>
+    <a href="imm2half.html">immigration Half Data</a>
+    <a href="nylawhalf.html">laws all Half Data</a>
+    <a href="illihalf.html">legal all Half Data</a>
+    <a href="nymexhalf.html">mexicans all Half Data</a>
+    <a href="nypolihalf.html">policy all Half Data</a>
+    <a href="nyvisahalf.html">visa all  Half Data</a>
+  </div>
+</div>
+       
+<p> All dates from 2019 semester of data is mentioned in the links given in the CSV file summited with this project </p>
+ <p> The NewYork times data we have used a varity of key words to extract the information form various articles. The following is a list of our key words used, Crisis, Daca, illigal, immigrants, immigration, laws, legal, mexicans, policy & visa. After getting the data using the words, we have used map reduce to parse, clean and read the data for procession. The code for this can be found in mapper.py and reducer.py for Word-Count & comap.py and reducer1.py for Word-Co-Occurence in our submission folder. As mentioned in the instructions we have broken the data down into half and full sets and done the word processing. We have run our mapper and reducer for word-count first, on the half the data for each key word, then second we ran it for the whole data set for that key word. This way we cna see how the words we see in the half dataset word cloud increases in frequency as we increase our volume of data. This just goes to show how our hypothesis that the the related issues depicted by the words are consistent as they increase in frequency. </p>
+ <script > d3.select("p").text("The NewYork times data we have used a varity of key words to extract the information form various articles. The following is a list of our key words used, Crisis, Daca, illigal, immigrants, immigration, laws, legal, mexicans, policy & visa. After getting the data using the words, we have used map reduce to parse, clean and read the data for procession. The code for this can be found in mapper.py and reducer.py for Word-Count & comap.py and reducer1.py for Word-Co-Occurence in our submission folder. As mentioned in the instructions we have brokemn the data down into half and full and done the word processing. We have run our mapper and reducer for word-count first, on the half the data for each key word, then second we ran it for the whole data set for that key word. This way we cna see how the words we see in the half dataset word cloud increases in frequency as we increase our volume of data. This just goes to show how our hypothesis that the the related issues depicted by the words are consistent as they increase in frequency."); </script>
+    
+ 
+    <div class="w3-col m4 w3-margin-bottom">
+      <div class="w3-light-blue">
+        <a href="wc_america_border.html"><img src="pic.png" alt="Twitter" style="width:100%"></a>
+        <div class="w3-container">
+          <h3>Please click on key words button above for Ny Times word cloud.</h3>
+          
+          
+    
+        </div>
+      </div>
+      
+    </div>
+    
+ <div class="w3-col m4 w3-margin-left">
+      <div class="w3-light-blue">
+        <a href="part-0000.txt"><img src="wc.png" alt="NyTimesExample" style="width:100%"></a>
+        <div class="w3-container">
+          <h3> Click above image for some Examples for MR Word Count output using MR. </h3>
+          
+    
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <br>
+<br>
+<br>
+ <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+  <!-- Header -->
+  <div class="w3-container" style="margin-top:80px" id="showcase">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Twitter</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+
+      <div class="dropdown">
+  <button class="dropbtn">Key Words</button>
+  <div class="dropdown-content">
+    <a href="twimmi.html">Immigration Full Data</a>
+    <a href="twimmipol.html">ImmigrationPolicy Full Data</a>
+    <a href="twlegalimmi.html">Legalimmigration Full Data</a>
+    <a href="twilligalimmi.html">Illegalimmigration Full Data</a>
+    <a href="twimmilaws.html">Immigrationlaws Full Data</a>
+    <a href="twborder.html">Borderwall Full Data</a>
+    <a href="twdaca.html">Daca Full Data</a>
+    <a href="twimmicrisis.html">Immigrationcrisis Full Data</a>
+    <a href="twimmihalf.html">Immigration Half Data</a>
+    <a href="twimmipolhalf.html">ImmigrationPolicy Half Data</a>
+    <a href="twlegalimmihalf.html">Legalimmigration Half Data</a>
+    <a href="twilligalimmihalf.html">Illegalimmigration Half Data</a>
+    <a href="twimmilawshalf.html">Immigrationlaws Half Data</a>
+    <a href="twborderhalf.html">Borderwall Half Data</a>
+    <a href="twdacahalf.html">Daca Half Data</a>
+    <a href="twimmicrisishalf.html">Immigrationcrisis Half Data</a>
+  </div>
+</div>
+        <p>Talk about Twitter data and add links </p>
+         <p> The Twitter data we have used a varity of key words to extract the information form various articles. The following is a list of our key words used, Immigration, #immigration, #immigrationpolicy, #legalimmigration, #illegalimmigration, #immigrationlaws, #BorderWall, #daca, & #immigrationcrisis. After getting the data using the words, we have used map reduce to parse, clean and read the data for procession. The code for this can be found in mapper.py and reducer.py for Word-Count & comap.py and reducer1.py for Word-Co-Occurence in our submission folder. As mentioned in the instructions we have broken the data down into half and full sets and done the word processing. We have run our mapper and reducer for word-count first, on the half the data for each key word, then second we ran it for the whole data set for that key word. This way we cna see how the words we see in the half dataset word cloud increases in frequency as we increase our volume of data. This just goes to show how our hypothesis that the the related issues depicted by the words are consistent as they increase in frequency. </p>
+        <div class="w3-col m4 w3-margin-bottom">
+      <div class="w3-light-blue">
+        <a href="wc_america_border.html"><img src="pic.png" alt="Twitter" style="width:100%"></a>
+        <div class="w3-container">
+          <h3> Please click on key words button above for Twitter word cloud </h3>
+
+          
+    
+        </div>
+        
+
+      </div>
+
+    </div>
+ 
+     <div class="w3-col m4 w3-margin-left">
+      <div class="w3-light-blue">
+        <a href="part-0000.txt"><img src="wc.png" alt="Twitter" style="width:100%"></a>
+        <div class="w3-container">
+          <h3> Click above image for some Examples for MR Word Count output using MR. </h3>
+          
+    
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+
+  <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+  <!-- Modal for full size images on click-->
+  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+    <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+      <img id="img01" class="w3-image">
+      <p id="caption"></p>
+    </div>
+  </div>
+
+  <!-- Services -->
+  <div class="w3-container" id="services" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Commom crawl</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <div class="dropdown">
+  <button class="dropbtn">Data Set</button>
+  <div class="dropdown-content">
+    <a href="ccsmall.html">Small Data Set</a>
+    <a href="ccbig.html">Big Data Set</a>
+  </div>
+</div>
+      
+    <p></p>
+     <p> Common Crawl is a nonprofit organization that crawls the web and provides the contents to the public free of charge and under few restrictions. The data is hosted on Amazon S3 as part of the Amazon Public Datasets program, making it easy and affordable to scan and analyze large portions of the internet.
+
+Common crawl provides an API that allows us to query a particular index for a particular domain and returns the result in the form of URL. The data can be retrieved from the same method which we used to extract the common crawl data. 
+ 
+We used common crawl to get the data from various news publication and government websites namely Washington Post, CNN, BBC, News Day and United States Immigration Council (USCIS). We collected over 55,000 links related to various topics. Once we had the links we used regular expression to extract the links which are pertinent to us.  We use the exact same approach to get the data from the links which we have discussed before. 
+
+ </p>
+ <script > d3.select("p").text("Common Crawl is a nonprofit organization that crawls the web and provides the contents to the public free of charge and under few restrictions. The data is hosted on Amazon S3 as part of the Amazon Public Datasets program, making it easy and affordable to scan and analyze large portions of the internet. This format is a general archive format that can be used both for storing the raw content of a web crawl and associated metadata. One of Common Crawl’s archives contains three types of files, all in the WARC format:• WARC files containing the raw crawl data. • WAT files containing metadata for the WARC records in a corresponding WARC file. • WET files containing plaintext contained in the WARC records in a corresponding WARC file.Common crawl provides an API that allows us to query a particular index for a particular domain and returns the result in the form of URL. The data can be retrieved from the same method which we used to extract the common crawl data. We used common crawl to get the data from various news publication and government websites namely Washington Post, CNN, BBC, News Day and United States Immigration Council (USCIS). We collected over 55,000 links related to various topics. Once we had the links we used regular expression to extract the links which are pertinent to us.  We use the exact same approach to get the data from the links which we have discussed before. "); 
+ </script>
+    
+
+    <div class="w3-col m4 w3-margin-bottom">
+      <div class="w3-light-blue">
+        <a href="wc_america_border.html"><img src="pic.png" alt="Twitter" style="width:100%"></a>
+        <div class="w3-container">
+          <h3>Please click on data set button above for common crawl word cloud </h3>
+          
+    
+        </div>
+      </div>
+    </div>
+     <div class="w3-col m4 w3-margin-left">
+      <div class="w3-light-blue">
+        <a href="part-0000.txt"><img src="wc.png" alt="CC Examples" style="width:100%"></a>
+        <div class="w3-container">
+          <h3> Click above image for some Examples for MR Word Count output using MR. </h3>
+          
+    
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  <br>
+<br>
+  <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="w3-container" id="wordco" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Word Co-Occurence</b></h1>
+
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+
+       <div class="dropdown">
+  <button class="dropbtn">Key Words</button>
+  <div class="dropdown-content">
+    <a href="twco.html">Twitter</a>
+    <a href="nywco.html">NewYork Times</a>
+    <a href="ccwco.html">Common Crawl</a>
+  </div>
+</div>
+
+<p><p> All dates from 2019 semester of data is mentioned in the links given in the CSV file summited with this project </p></p>
+ <p><p>For the NewYork Times data we collected the data based on our key words. Our key words are as follows</p></p>
+
+    
+ 
+    <div class="w3-col m4 w3-margin-bottom">
+      <div class="w3-light-grey">
+        <a href="wc_america_border.html"><img src="pic.png" alt="Twitter" style="width:100%"></a>
+        <div class="w3-container">
+          <h3>For NyTimes Data word cloud please select a key word above.  </h3>
+          
+    
+        </div>
+      </div>
+    </div>
+    
+ 
+  </div>
+
+</div>
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Achintya Pillai & Abhishekh Sarvepalli CSE-587 Lab 2  </div>
+
+
+</body>
+</html>

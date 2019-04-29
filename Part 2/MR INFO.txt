@@ -1,0 +1,2 @@
+--> Please run mapper.py and reducer.py for Word Count
+--> Please run comap.py and reducer1.py for Word Co-Occurence

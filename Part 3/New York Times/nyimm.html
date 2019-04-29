@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="d3.layout.cloud.js"></script>
+<head>
+    <title>Word Cloud Example</title>
+</head>
+<style>
+    body {
+        font-family:"Lucida Grande","Droid Sans",Arial,Helvetica,sans-serif;
+    }
+    .legend {
+        border: 1px solid #555555;
+        border-radius: 30px 30px 30px 30px;
+        font-size: 1em;
+        margin: 10px;
+        padding: 8px;
+    }
+    .bld {
+        font-weight: bold;
+    }
+</style>
+<body>
+
+</body>
+<script>
+
+
+var frequency_list = [{"text":"border","size":76},{"text":"year","size":66},{"text":"people","size":89},{"text":"would","size":79},{"text":"new","size":66},{"text":"democrat","size":85},{"text":"state","size":90},{"text":"trump","size":99},{"text":"said","size":104},{"text":"immigrat","size":75}];
+var fill = d3.scale.category20();
+
+var layout = d3.layout.cloud()
+    .size([1000, 900])
+    .words(frequency_list)
+    .padding(5)
+    .rotate(function() { return ~~(Math.random() * 2) * 90; })
+    .font("Impact")
+    .fontSize(function(d) { return d.size  })
+    .on("end", draw);
+
+layout.start();
+
+function draw(words) {
+  d3.select("body").append("svg")
+      .attr("width", layout.size()[0])
+      .attr("height", layout.size()[1])
+    .append("g")
+      .attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
+    .selectAll("text")
+      .data(words)
+    .enter().append("text")
+      .style("font-size", function(d) { return d.size + "px"; })
+      .style("font-family", "Impact")
+      .style("fill", function(d, i) { return fill(i); })
+      .attr("text-anchor", "middle")
+      .attr("transform", function(d) {
+        return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+      })
+      .text(function(d) { return d.text; });
+}		
+</script>
+
+
+
+</html>
